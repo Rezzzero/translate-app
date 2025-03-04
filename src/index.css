@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
 body {
-  background-color: black;
+  background: url("./assets/background/hero_img.jpg") no-repeat,
+    linear-gradient(180deg, rgb(17, 8, 32), rgba(0, 0, 0, 1));
+  height: 100vh;
 }
