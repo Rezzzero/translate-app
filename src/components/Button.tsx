@@ -1,3 +1,3 @@
 export const Button = ({ children }: { children: string }) => {
-  return <button>{children}</button>;
+  return <button className="text-gray-200">{children}</button>;
 };
