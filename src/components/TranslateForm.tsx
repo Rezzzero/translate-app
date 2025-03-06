@@ -13,10 +13,18 @@ export const TranslateForm = ({
   outputText,
   onChangeInput,
   handleGetTranslated,
+  translateFrom,
+  translateTo,
+  handleSwitchLanguages,
 }: TranslateFormProps) => {
   return (
     <div className="bg-[#121826CC] flex flex-col opacity-95 w-[565px] h-[350px] p-6 rounded-3xl border-2 border-[#464b61]">
-      <SelectLanguage isInput={isInput} />
+      <SelectLanguage
+        isInput={isInput}
+        translateFrom={translateFrom}
+        translateTo={translateTo}
+        handleSwitchLanguages={handleSwitchLanguages}
+      />
       {isInput ? (
         <InputComponent text={inputText} onChange={onChangeInput} />
       ) : (

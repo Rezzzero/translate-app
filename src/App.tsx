@@ -5,6 +5,8 @@ import { TranslateForm } from "./components/TranslateForm";
 export const App = () => {
   const [inputText, setInputText] = useState("Hello, how are you?");
   const [outputText, setOutputText] = useState("Bonjour, comment allez-vous?");
+  const [translateFrom, setTranslateFrom] = useState("en");
+  const [translateTo, setTranslateTo] = useState("fr");
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
@@ -14,7 +16,7 @@ export const App = () => {
       const response = await fetch(
         `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
           inputText
-        )}&langpair=en|fr`
+        )}&langpair=${translateFrom}|${translateTo}`
       );
 
       if (!response.ok) {
@@ -26,6 +28,11 @@ export const App = () => {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
+  };
+
+  const handleSwitchLanguages = () => {
+    setTranslateFrom(translateTo);
+    setTranslateTo(translateFrom);
   };
 
   const handleGetTranslated = () => {
@@ -41,8 +48,14 @@ export const App = () => {
           inputText={inputText}
           onChangeInput={handleChangeInput}
           handleGetTranslated={handleGetTranslated}
+          translateFrom={translateFrom}
         />
-        <TranslateForm isInput={false} outputText={outputText} />
+        <TranslateForm
+          isInput={false}
+          outputText={outputText}
+          translateTo={translateTo}
+          handleSwitchLanguages={handleSwitchLanguages}
+        />
       </div>
     </div>
   );
