@@ -7,7 +7,7 @@ export const SelectLanguage = ({ isInput }: { isInput: boolean }) => {
     <div
       className={`flex border-b-2 border-[#464b61] pl-2 ${
         isInput ? "pb-7" : "pb-4"
-      } justify-between`}
+      } justify-between mb-6`}
     >
       <div className="flex gap-2">
         {isInput && <Button>Detect Language</Button>}

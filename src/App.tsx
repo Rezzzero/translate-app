@@ -9,6 +9,29 @@ export const App = () => {
     setInputText(e.target.value);
   };
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
+          inputText
+        )}&langpair=en|fr`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setOutputText(data.responseData.translatedText);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const handleGetTranslated = () => {
+    fetchData();
+  };
+
   return (
     <div className="container mx-auto mt-20 flex flex-col justify-center text-white">
       <img src={logo} alt="logo" className="w-1/8 mx-auto mb-14" />
@@ -17,6 +40,7 @@ export const App = () => {
           isInput={true}
           inputText={inputText}
           onChangeInput={handleChangeInput}
+          handleGetTranslated={handleGetTranslated}
         />
         <TranslateForm isInput={false} outputText={outputText} />
       </div>

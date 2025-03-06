@@ -3,4 +3,5 @@ export interface TranslateFormProps {
   inputText?: string;
   outputText?: string;
   onChangeInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleGetTranslated?: () => void;
 }

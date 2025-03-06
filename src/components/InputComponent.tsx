@@ -6,7 +6,7 @@ export const InputComponent = ({
   onChange: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }) => {
   return (
-    <div className="w-full h-[160px] relative">
+    <div className="w-full h-[170px] relative">
       <input
         type="text"
         placeholder=""
