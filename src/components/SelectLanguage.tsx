@@ -4,7 +4,11 @@ import { Icon } from "./Icon";
 
 export const SelectLanguage = ({ isInput }: { isInput: boolean }) => {
   return (
-    <div className="flex border-b-2 border-[#464b61] pl-2 pb-4 justify-between mb-6">
+    <div
+      className={`flex border-b-2 border-[#464b61] pl-2 ${
+        isInput ? "pb-7" : "pb-4"
+      } justify-between`}
+    >
       <div className="flex gap-2">
         {isInput && <Button>Detect Language</Button>}
         <Button>English</Button>
