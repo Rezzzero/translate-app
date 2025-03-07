@@ -1,34 +1,39 @@
 import arrows from "../assets/icons/Horizontal_top_left_main.svg";
 import { Icon } from "./Icon";
 import { SelectLanguageProps } from "../types";
+import { LanguageDrop } from "./LanguageDrop";
 
 export const SelectLanguage = ({
   isInput,
   translateFrom,
   translateTo,
   handleSwitchLanguages,
+  handleSelectLanguage,
 }: SelectLanguageProps) => {
+  const isEnSelected = translateFrom === "en" || translateTo === "en";
+  const isFrSelected = translateFrom === "fr" || translateTo === "fr";
+
   return (
     <div
       className={`flex border-b-2 border-[#464b61] pl-2 pb-4 justify-between mb-6`}
     >
-      <div className="flex gap-6 h-[36px]">
+      <div className="flex gap-4 h-[36px]">
         {isInput && <button className="text-gray-200">Detect Language</button>}
         <button
-          className={`text-gray-200 ${
-            translateFrom === "en" || translateTo === "en"
-              ? "bg-[#4D5562] rounded-xl px-3 py-[5px] cursor-pointer"
-              : ""
+          onClick={(e) => handleSelectLanguage(e)}
+          className={`text-gray-200 px-3 py-[5px] cursor-pointer rounded-xl ${
+            isEnSelected ? "bg-[#4D5562]" : ""
           }`}
+          value={"en"}
         >
           English
         </button>
         <button
-          className={`text-gray-200 ${
-            translateTo === "fr" || translateFrom === "fr"
-              ? "bg-[#4D5562] rounded-xl px-3 cursor-pointer"
-              : ""
+          onClick={(e) => handleSelectLanguage(e)}
+          className={`text-gray-200 px-3 cursor-pointer rounded-xl ${
+            isFrSelected ? "bg-[#4D5562]" : ""
           }`}
+          value={"fr"}
         >
           French
         </button>
