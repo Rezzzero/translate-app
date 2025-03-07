@@ -37,6 +37,7 @@ export const SelectLanguage = ({
         >
           French
         </button>
+        <LanguageDrop isInput={isInput} />
       </div>
       {!isInput && <Icon handleClick={handleSwitchLanguages}>{arrows}</Icon>}
     </div>

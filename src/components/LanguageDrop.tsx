@@ -7,11 +7,7 @@ export const LanguageDrop = ({ isInput }: { isInput: boolean }) => {
     setOpen(!open);
   };
   return (
-    <div
-      className={`absolute top-[26px] ${
-        isInput ? "right-1/3" : "right-[53%]"
-      } relative`}
-    >
+    <div className="relative">
       <button
         onClick={toggleDropDown}
         className="flex items-center gap-2 py-[5px] cursor-pointer"

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import logo from "./assets/logo/logo.svg";
 import { TranslateForm } from "./components/TranslateForm";
-import { LanguageDrop } from "./components/LanguageDrop";
 
 export const App = () => {
   const [inputText, setInputText] = useState("Hello, how are you?");
@@ -52,27 +51,21 @@ export const App = () => {
     <div className="container mx-auto mt-20 flex flex-col justify-center text-white">
       <img src={logo} alt="logo" className="w-1/8 mx-auto mb-14" />
       <div className="flex flex-col md:flex-row max-md:mx-auto gap-3 justify-center">
-        <div className="flex relative">
-          <TranslateForm
-            isInput={true}
-            inputText={inputText}
-            onChangeInput={handleChangeInput}
-            handleGetTranslated={handleGetTranslated}
-            translateFrom={translateFrom}
-            handleSelectLanguage={selectLanguageFrom}
-          />
-          <LanguageDrop isInput={true} />
-        </div>
-        <div className="flex relative">
-          <TranslateForm
-            isInput={false}
-            outputText={outputText}
-            translateTo={translateTo}
-            handleSwitchLanguages={handleSwitchLanguages}
-            handleSelectLanguage={selectLanguageTo}
-          />
-          <LanguageDrop isInput={false} />
-        </div>
+        <TranslateForm
+          isInput={true}
+          inputText={inputText}
+          onChangeInput={handleChangeInput}
+          handleGetTranslated={handleGetTranslated}
+          translateFrom={translateFrom}
+          handleSelectLanguage={selectLanguageFrom}
+        />
+        <TranslateForm
+          isInput={false}
+          outputText={outputText}
+          translateTo={translateTo}
+          handleSwitchLanguages={handleSwitchLanguages}
+          handleSelectLanguage={selectLanguageTo}
+        />
       </div>
     </div>
   );
