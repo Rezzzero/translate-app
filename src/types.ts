@@ -8,6 +8,8 @@ export interface TranslateFormProps {
   translateTo?: string;
   handleSwitchLanguages?: () => void;
   handleSelectLanguage: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  handleCopy: () => void;
+  speakText: (text: string, language: string) => void;
 }
 
 export interface SelectLanguageProps {

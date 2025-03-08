@@ -17,7 +17,12 @@ export const TranslateForm = ({
   translateTo,
   handleSwitchLanguages,
   handleSelectLanguage,
+  handleCopy,
+  speakText,
 }: TranslateFormProps) => {
+  const textToSpeech = isInput ? inputText : outputText;
+  const language = isInput ? translateFrom : translateTo;
+
   return (
     <div
       className={`${
@@ -37,8 +42,15 @@ export const TranslateForm = ({
         <OutputComponent text={outputText} />
       )}
       <div className="flex gap-3">
-        <Icon>{sound}</Icon>
-        <Icon>{copy}</Icon>
+        <Icon
+          handleClick={() =>
+            textToSpeech && language && speakText(textToSpeech, language)
+          }
+        >
+          {sound}
+        </Icon>
+
+        <Icon handleClick={handleCopy}>{copy}</Icon>
 
         {isInput && (
           <button

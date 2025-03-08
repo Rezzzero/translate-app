@@ -47,6 +47,26 @@ export const App = () => {
     fetchData();
   };
 
+  const copyInputToClipboard = () => {
+    navigator.clipboard.writeText(inputText);
+  };
+
+  const copyOutputToClipboard = () => {
+    navigator.clipboard.writeText(outputText);
+  };
+
+  const speakText = (text: string, language: string) => {
+    if (!text) return;
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(text);
+    if (language === "en") {
+      utterance.lang = "en-US";
+    } else if (language === "fr") {
+      utterance.lang = "fr-FR";
+    }
+    synth.speak(utterance);
+  };
+
   return (
     <div className="container mx-auto mt-20 flex flex-col justify-center text-white">
       <img src={logo} alt="logo" className="w-1/8 mx-auto mb-14" />
@@ -58,6 +78,8 @@ export const App = () => {
           handleGetTranslated={handleGetTranslated}
           translateFrom={translateFrom}
           handleSelectLanguage={selectLanguageFrom}
+          handleCopy={copyInputToClipboard}
+          speakText={() => speakText(inputText, translateFrom)}
         />
         <TranslateForm
           isInput={false}
@@ -65,6 +87,8 @@ export const App = () => {
           translateTo={translateTo}
           handleSwitchLanguages={handleSwitchLanguages}
           handleSelectLanguage={selectLanguageTo}
+          handleCopy={copyOutputToClipboard}
+          speakText={() => speakText(outputText, translateTo)}
         />
       </div>
     </div>

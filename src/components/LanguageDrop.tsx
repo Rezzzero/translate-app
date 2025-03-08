@@ -10,7 +10,7 @@ export const LanguageDrop = ({ isInput }: { isInput: boolean }) => {
     <div className="relative">
       <button
         onClick={toggleDropDown}
-        className="flex items-center gap-2 py-[5px] cursor-pointer"
+        className="flex items-center gap-1 py-[5px] cursor-pointer"
       >
         Spanish <KeyboardArrowDownIcon />
       </button>

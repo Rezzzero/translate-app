@@ -3,7 +3,7 @@ export const Icon = ({
   handleClick,
 }: {
   children: string;
-  handleClick?: (() => void) | undefined;
+  handleClick?: () => void;
 }) => {
   return (
     <button
