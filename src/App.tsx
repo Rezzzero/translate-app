@@ -79,7 +79,7 @@ export const App = () => {
           translateFrom={translateFrom}
           handleSelectLanguage={selectLanguageFrom}
           handleCopy={copyInputToClipboard}
-          speakText={() => speakText(inputText, translateFrom)}
+          speakText={speakText}
         />
         <TranslateForm
           isInput={false}
@@ -88,7 +88,7 @@ export const App = () => {
           handleSwitchLanguages={handleSwitchLanguages}
           handleSelectLanguage={selectLanguageTo}
           handleCopy={copyOutputToClipboard}
-          speakText={() => speakText(outputText, translateTo)}
+          speakText={speakText}
         />
       </div>
     </div>
